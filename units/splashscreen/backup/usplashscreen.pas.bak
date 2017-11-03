@@ -1,0 +1,50 @@
+unit uSplashscreen;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, ExtCtrls, Controls;
+
+type
+  TSplashscreen = class
+    private
+      Container: TPanel;
+    public
+      procedure Resize;
+      constructor Create(WC: TWinControl);
+  end;
+
+implementation
+
+constructor TSplashscreen.Create(WC: TWinControl);
+begin
+  Container:= TPanel.Create(Nil);
+  with Container do begin
+    Parent:= WC;
+    // anchoring
+    Anchors:= [akTop, akBottom, akLeft, akRight];
+    AnchorSide[akTop].Side:= asrTop;
+    AnchorSide[akTop].Control:= Parent;
+    AnchorSide[akBottom].Side:= asrBottom;
+    AnchorSide[akBottom].Control:= Parent;
+    AnchorSide[akLeft].Side:= asrLeft;
+    AnchorSide[akLeft].Control:= Parent;
+    AnchorSide[akRight].Side:= asrRight;
+    AnchorSide[akRight].Control:= Parent;
+    BorderSpacing.Around:= 8;
+    // aesthetic
+    BevelOuter:= bvNone;
+    BorderStyle:= bsNone;
+    Color:= $00C3D563;
+  end;
+end;
+
+procedure TSplashscreen.Resize;
+begin
+
+end;
+
+end.
+
