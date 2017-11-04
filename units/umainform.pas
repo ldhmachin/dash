@@ -9,6 +9,12 @@ uses
   LCLType, ExtCtrls, uSplashscreen, uScreenCanvas, uNavbar;
 
 type
+  TWindowStyle = (wsFlat, wsBorder);
+
+const
+  WINDOWSTYLE = wsBorder;
+
+type
 
   { TMainForm }
 
@@ -38,7 +44,10 @@ implementation
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   with MainForm do begin
-    BorderStyle:= bsNone;
+    case WINDOWSTYLE of
+      wsFlat: BorderStyle:= bsNone;
+      wsBorder: BorderStyle:= bsSizeable;
+    end;
     Color:= clWhite;
   end;
   Navbar:= TNavbar.Create(MainForm);
